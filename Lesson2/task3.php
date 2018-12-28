@@ -1,7 +1,7 @@
 <?php
 $constName = 'load';
 if (!defined($constName)) {
-    require "$constName.php";
+    require __DIR__."/$constName.php";
 } else {
     echo "Файл $constName уже был загружен\n";
 }
@@ -10,7 +10,7 @@ if (!defined($constName)) {
 
 $constName = 'load';
 if (!defined($constName)) {
-    require "$constName.php";
+    require __DIR__."/$constName.php";
 } else {
     echo "Файл $constName уже был загружен\n";
 }

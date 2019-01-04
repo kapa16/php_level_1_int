@@ -2,8 +2,8 @@
 
 echo "1. Создайте функцию is_odd(), которая принимает в качестве аргумента целое число и возвращает true, <br>
 в случае если число нечетное и false — в противном случае.<br><br>";
-function is_odd(int $num) {
-    return $num % 2 !== 0;
+function is_odd(int $num) : bool {
+    return $num % 2;
 }
 
 for ($i = 1; $i <= 10; $i++) {
@@ -58,7 +58,7 @@ function getWord($num, $fst, $snd, $trd) {
 
 function getAge($birthDay) {
     $diff = time() - $birthDay;
-    return floor($diff / (60 * 60 * 24 * 365));
+    return floor($diff / (60 * 60 * 24 * 365.25));
 }
 
 if (isset($_POST['birthDay'])) {
@@ -80,11 +80,42 @@ $daysMonth = [];
 for ($i = 1; $i <= $lastDay; $i++) {
     array_push($daysMonth, mktime(0, 0, 0, $currMonth, $i, $currYear));
 }
+$days = array(
+        'Понедельник',
+        'Вторник',
+        'Среда',
+        'Четверг',
+        'Пятница',
+        'Суббота',
+        'Воскресенье'
+);
 foreach ($daysMonth as $dayMonth) {
-    if (date('N', $dayMonth) > 5) {
+    $dayNum = date('N', $dayMonth);
+
+    if ($dayNum > 5) {
         echo "<b>" . date('d.m.Y', $dayMonth) . "</b>";
     } else {
         echo date('d.m.Y', $dayMonth);
     }
-    echo "<br>";
+    echo ' - ' . $days[$dayNum - 1] . "<br>";
 }
+
+echo "<hr>";
+
+echo '5. По желанию. Напишите функцию для вычисления произвольного числа Фибоначчи. 
+Числами Фибоначчи называется последовательность, в которой число равно сумме двух предыдущих чисел. 
+Вызов функции fibonacci(10) должен возвращать число 55.' . "<br><br>";
+
+function fibonacci($num) {
+    $a = 0;
+    $b = 1;
+    for ($i = 2; $i <= $num; $i++) {
+        [$a, $b] = [$b, $a + $b];
+    }
+    return $b;
+}
+
+echo 'Число Фибоначи для 2 = ' . fibonacci(2) . "<br>";
+echo 'Число Фибоначи для 10 = ' . fibonacci(10) . "<br>";
+echo 'Число Фибоначи для 20 = ' . fibonacci(20) . "<br>";
+echo 'Число Фибоначи для 30 = ' . fibonacci(30) . "<br>";

@@ -73,5 +73,18 @@ echo "<hr>";
 echo htmlspecialchars("4. *По желанию. Создайте массив с датами текущего месяца, выведите список дат в браузер,
 выделите субботы и воскресенья жирным шрифтом (тэгом <b>...</b>).") . "<br><br>";
 
-$fstDay = date('Y-m-01');
-echo $fstDay;
+$lastDay = date('t');
+$currMonth = date('m');
+$currYear = date('Y');
+$daysMonth = [];
+for ($i = 1; $i <= $lastDay; $i++) {
+    array_push($daysMonth, mktime(0, 0, 0, $currMonth, $i, $currYear));
+}
+foreach ($daysMonth as $dayMonth) {
+    if (date('N', $dayMonth) > 5) {
+        echo "<b>" . date('d.m.Y', $dayMonth) . "</b>";
+    } else {
+        echo date('d.m.Y', $dayMonth);
+    }
+    echo "<br>";
+}

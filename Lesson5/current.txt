@@ -1,0 +1,5 @@
+test.txt
+task3.txt
+index.php
+dir1
+current.txt

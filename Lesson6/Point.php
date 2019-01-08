@@ -5,7 +5,7 @@ class Point
     private $coords = [];
     private static $countPoints = 0;
 
-    public function __construct($x = 0, $y = 0, $z = 0)
+    public function __construct(float $x = 0, float $y = 0, float $z = 0)
     {
         $this->coords = ['x' => $x, 'y' => $y, 'z' => $z];
         self::$countPoints++;
@@ -26,11 +26,18 @@ class Point
     }
 
     public static function calculateDistance($point1, $point2) {
-        return 'Растояние между точками: ' . sqrt(
+        return "Растояние между точками 
+            ({$point1->x}, {$point1->y}, {$point1->z}) и 
+            ({$point2->x}, {$point2->y}, {$point2->z}): " . sqrt(
             pow($point2->x - $point1->x, 2) +
             pow($point2->y - $point1->y, 2) +
             pow($point2->z - $point1->z, 2)
         );
+    }
+
+    public function __toString()
+    {
+        return "Координаты точки: ({$this->x}, {$this->y}, {$this->z})";
     }
 
     public function __destruct()

@@ -1,12 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kapa
- * Date: 07.01.2019
- * Time: 19:34
- */
 
 class User
 {
+    public  function __construct($name, $lastName, $patronymic) {
+        $this->$name = $name;
+        $this->$lastName = $lastName;
+        $this->$patronymic = $patronymic;
+    }
 
+    public function __toString()
+    {
+        return $this->lastName . $this->lastname;
+    }
 }

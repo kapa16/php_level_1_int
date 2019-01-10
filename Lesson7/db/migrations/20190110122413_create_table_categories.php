@@ -8,8 +8,7 @@ class CreateTableCategories extends AbstractMigration
     public function change()
     {
         $table = $this->table('categories');
-        $table->addColumn('id', 'integer')
-            ->addColumn('name', 'string', ['limit' => 60])
+        $table->addColumn('name', 'string', ['limit' => 60])
             ->create();
     }
 }

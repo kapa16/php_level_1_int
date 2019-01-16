@@ -9,17 +9,21 @@
 </head>
 <body>
 
+<a href="index.php">Домой</a>
+<br>
+<hr>
+
 <form action="#" method="post">
     <label> Введите координаты 1-ой точки: X
-        <input type="number" name="x1">
+        <input type="number" name="x1" step="0.01">
         Y
-        <input type="number" name="y1">
+        <input type="number" name="y1" step="0.01">
     </label>
     <br>
     <label> Введите координаты 2-ой точки: X
-        <input type="number" name="x2">
+        <input type="number" name="x2" step="0.01">
         Y
-        <input type="number" name="y2">
+        <input type="number" name="y2" step="0.01">
     </label>
     <br>
     <button type="submit">Рассчитать</button>
@@ -27,11 +31,18 @@
 </form>
 
 <?php
+function getValue($index) {
+    if (isset($_POST[$index])) {
+        return (float) $_POST[$index];
+    } else {
+        return 0;
+    }
+}
 
-$x1 = (float) $_POST['x1'];
-$x2 = (float) $_POST['x2'];
-$y1 = (float) $_POST['y1'];
-$y2 = (float) $_POST['y2'];
+$x1 = getValue('x1');
+$x2 = getValue('x2');
+$y1 = getValue('y1');
+$y2 = getValue('y2');
 
 
 echo "Расстояние между точками: " . sqrt(pow($x2 - $x1, 2) + pow($y2 - $y1, 2));

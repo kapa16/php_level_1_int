@@ -10,5 +10,7 @@
 <body>
 <a href="task1.php">Первое задание</a>
 <br>
+<a href="task2.php">Второе задание</a>
+<br>
 </body>
 </html>

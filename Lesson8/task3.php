@@ -20,7 +20,7 @@ $filename = __DIR__ . '/content.txt';
     <form action="#" method="post">
         <textarea name="text" id="" cols="30" rows="10"><?php
             if (file_exists($filename)) {
-                print(file_get_contents($filename));
+                readfile($filename);
             }
             ?>
         </textarea>

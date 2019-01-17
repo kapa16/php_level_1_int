@@ -15,29 +15,63 @@
     <hr>
     <form action="#" method="post">
         <label for="name">Имя: </label>
-        <input type="text" name="name" id="name"><br>
+        <input type="text" name="name" id="name"><br><br>
         <label for="surname">Фамилия: </label>
-        <input type="text" name="surname" id="surname"><br>
+        <input type="text" name="surname" id="surname"><br><br>
         <button type="submit">Отправить</button>
     </form>
-</div>
-<?php
-function getValue($index)
-{
-    if (isset($_POST[$index])) {
-        return $_POST[$index];
-    } else {
-        return '';
+    <?php
+    function getValue($index)
+    {
+        if (isset($_POST[$index])) {
+            return $_POST[$index];
+        } else {
+            return '';
+        }
     }
-}
 
-function checkValue($val) {
-    $strLen = mb_strlen($val);
-    return ($strLen < 2 || $strLen > 20 );
-}
+    function checkValue($val) {
+        $strLen = mb_strlen($val);
+        return ($strLen < 2 || $strLen > 20 );
+    }
 
-$name = getValue('name');
+    $name = getValue('name');
+    $surname = getValue('surname');
+    if (checkValue($name) || checkValue($surname)) {
+        echo 'Длина имени и фамилии должны быть от 2 до 20 символов';
+        die();
+    }
 
-?>
+    $userName = $surname . ', ' . $name . PHP_EOL;
+
+    $filename = __DIR__ . '/users.txt';
+
+    if (file_exists($filename)) {
+        $users = file($filename);
+
+        if (in_array($userName, $users, true)) {
+            echo 'Вы уже зарегистрированы';
+            die();
+        }
+    }
+
+    print ('<table>');
+    foreach ($users as $user) {
+        $userInfo = explode(', ', $user);
+        echo '<tr>';
+        echo '<td>' . $userInfo[0] . '</td><td>' . $userInfo[1] . '</td>';
+        echo '</tr>';
+
+    }
+    print ('</table>');
+
+
+    $file = fopen($filename, 'a');
+    fwrite($file, $userName);
+    fclose($file);
+
+    ?>
+</div>
+
 </body>
 </html>

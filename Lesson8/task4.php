@@ -31,7 +31,7 @@
     }
 
     function checkValue($val) {
-        $strLen = mb_strlen($val);
+        $strLen = strlen($val);//TODO mb_strlen
         return ($strLen < 2 || $strLen > 20 );
     }
 
@@ -51,7 +51,11 @@
 
         if (in_array($userName, $users, true)) {
             echo 'Вы уже зарегистрированы';
-            die();
+        } else {
+            $users[] = $userName;
+            $file = fopen($filename, 'a');
+            fwrite($file, $userName);
+            fclose($file);
         }
     }
 
@@ -66,9 +70,7 @@
     print ('</table>');
 
 
-    $file = fopen($filename, 'a');
-    fwrite($file, $userName);
-    fclose($file);
+
 
     ?>
 </div>

@@ -31,8 +31,8 @@
     }
 
     function checkValue($val) {
-        $strLen = strlen($val);//TODO mb_strlen
-        return ($strLen < 2 || $strLen > 20 );
+        $strLen = strlen($val);
+        return ($strLen <= 2 || $strLen > 20 );
     }
 
     $name = getValue('name');
@@ -46,6 +46,7 @@
 
     $filename = __DIR__ . '/users.txt';
 
+    $users = [];
     if (file_exists($filename)) {
         $users = file($filename);
 

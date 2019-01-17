@@ -11,7 +11,6 @@
 <body>
 <div class="container">
     <a href="index.php">Домой</a>
-    <br>
     <hr>
 
     <form action="#" method="post">

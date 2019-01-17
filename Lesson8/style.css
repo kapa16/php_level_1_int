@@ -4,6 +4,12 @@
 }
 
 a {
+    display: block;
     text-decoration: none;
+    padding: 10px;
     color: black;
+}
+
+a:hover {
+    background: rgba(0, 0, 0, 0.2);
 }

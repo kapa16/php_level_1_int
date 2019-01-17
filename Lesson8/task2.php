@@ -38,10 +38,12 @@
         }
     }
 
-    $quantity = getValue('quantity');
-    $price = getValue('price');
+    $quantity = (int) getValue('quantity');
+    $price = round(getValue('price'), 2);
 
-    echo 'Сумма = ' . ($quantity * $price);
+    echo 'Количество: ' . $quantity . '<br>';
+    echo 'Цена: ' . $price . '<br>';
+    echo 'Сумма: ' . ($quantity * $price);
 
 
     ?>

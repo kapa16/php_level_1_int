@@ -1,4 +1,9 @@
 <?php
+if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
+    header('HTTP/1.0 403 Forbidden');
+    exit('Недопустимое обращение к странице');
+}
+
 $pdo = new PDO(
     'mysql:host=localhost;dbname=shop', 'root', '',
     [

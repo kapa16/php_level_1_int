@@ -23,11 +23,19 @@ class ShopSeeder extends AbstractSeed
         $query = 'SELECT * FROM catalogs';
         $result = $this->adapter->query($query);
 
-        $catalogs = [];
+        $products = [];
+        $faker = Faker\Factory::create();
         while ($catalog = $result->fetch(PDO::FETCH_ASSOC)) {
-            $catalogs[$catalog['name']] = $catalog['id'];
+            for ($i = 0; $i < 10; $i++) {
+                $products[] = [
+                    'name' => $faker->bothify("{$catalog['name']} ????####"),
+                    'description' => $faker->text(200),
+                    'price' => $faker->randomFloat(null, 1000.0, 20000.0),
+                    'catalog_id' => $catalog['id']
+                ];
+            }
         }
 
-
+        $this->table('products')->insert($products)->save();
     }
 }

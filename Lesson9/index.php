@@ -8,7 +8,15 @@
     <title>Интернет-магазин</title>
 </head>
 <body>
-
+<h1>Интернет-магазин</h1>
+<?php
+require_once(__DIR__ . '/db_connect.php');
+if(empty($_GET['catalog_id'])) {
+    require_once(__DIR__ . '/catalogs.php');
+} else {
+    require_once(__DIR__ . '/list.php');
+}
+?>
 
 
 </body>

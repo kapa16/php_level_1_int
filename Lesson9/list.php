@@ -11,7 +11,8 @@ $result = $pdo->prepare($query);
 $result->execute(['catalog_id' => $catalog_id]);
 
 while ($product = $result->fetch()) {
-    echo "<p>Имя: " . htmlspecialchars($product['name']) . "</p>";
+    echo "<h2><small>Имя: " . htmlspecialchars($product['name']) . "</small></h2>";
     echo "<p>Описание: " . htmlspecialchars($product['description']) . "</p>";
-    echo "<p>Цена: " . htmlspecialchars($product['price']) . "</p>";
+    echo "<button type='button' class='btn btn-primary'>" .
+        "Купить за " . htmlspecialchars($product['price']) . " руб.</button>";
 }

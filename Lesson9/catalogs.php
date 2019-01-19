@@ -4,10 +4,9 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
     exit('Недопустимое обращение к странице');
 }
 
-$query = 'SELECT * FROM catalogs ORDER BY name';
-$result = $pdo->query($query);
+$catalogs = Models\Catalog::instance($pdo);
 
-while ($catalog = $result->fetch()) {
+foreach ($catalogs->items() as $catalog) {
     echo "<h2><small><a href='/index.php?catalog_id={$catalog['id']}'>" .
         htmlspecialchars($catalog['name']) .
         "</a></small></h2>";

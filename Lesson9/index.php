@@ -3,15 +3,15 @@ session_start();
 spl_autoload_register();
 
 require_once(__DIR__ . '/db_connect.php');
-require_once(__DIR__ . '/header.php');
+require_once(__DIR__ . '/pagecontent/header.php');
 
-require(__DIR__ . '/menu.php');
+require(__DIR__ . '/pagecontent/menu.php');
 
 if (empty($_GET['catalog_id'])) {
-    require_once(__DIR__ . '/catalogs.php');
+    require_once(__DIR__ . '/pagecontent/catalogs.php');
 } else {
-    require_once(__DIR__ . '/list.php');
+    require_once(__DIR__ . '/pagecontent/list.php');
 }
 
-require_once(__DIR__ . '/footer.php');
+require_once(__DIR__ . '/pagecontent/footer.php');
 

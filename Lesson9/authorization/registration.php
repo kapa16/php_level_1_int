@@ -2,7 +2,7 @@
 session_start();
 spl_autoload_register();
 
-require_once(__DIR__ . '/db_connect.php');
+require_once(__DIR__ . '/../db_connect.php');
 
 $errors = [];
 $name = '';
@@ -44,15 +44,15 @@ if (!empty($_POST)) {
             $query = "INSERT INTO users(name, email, password) VALUES (?, ?, ?)";
             $result = $pdo->prepare($query);
             $result->execute([$name, $email, password_hash($password, PASSWORD_DEFAULT)]);
-            header('location: /login.php');
+            header('location: /authorization/login.php');
             exit();
         }
     }
 }
 
-require_once(__DIR__ . '/header.php');
+require_once(__DIR__ . '/../pagecontent/header.php');
 
-require(__DIR__ . '/menu.php');
+require(__DIR__ . '/../pagecontent/menu.php');
 
 if(!empty($errors)){
     echo "<div class='alert alert-danger col-6'>";
@@ -84,4 +84,4 @@ if(!empty($errors)){
 </form>
 
 <?php
-require_once(__DIR__ . '/footer.php');
+require_once(__DIR__ . '/../pagecontent/footer.php');

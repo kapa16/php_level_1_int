@@ -2,7 +2,7 @@
 session_start();
 spl_autoload_register();
 
-require_once(__DIR__ . '/db_connect.php');
+require_once(__DIR__ . '/../db_connect.php');
 
 $errors = [];
 $email = '';
@@ -31,15 +31,15 @@ if (!empty($_POST)) {
         if (empty($errors)) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['name'];
-            header('location: /');
+            header('location: /../');
             exit();
         }
     }
 }
 
-require_once(__DIR__ . '/header.php');
+require_once(__DIR__ . '/../pagecontent/header.php');
 
-require(__DIR__ . '/menu.php');
+require(__DIR__ . '/../pagecontent/menu.php');
 
 if(!empty($errors)){
     echo "<div class='alert alert-danger col-6'>";
@@ -63,4 +63,4 @@ if(!empty($errors)){
 </form>
 
 <?php
-require_once(__DIR__ . '/footer.php');
+require_once(__DIR__ . '/../pagecontent/footer.php');

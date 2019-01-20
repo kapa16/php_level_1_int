@@ -1,4 +1,5 @@
 <?php
+session_start();
 spl_autoload_register();
 
 require_once(__DIR__ . '/db_connect.php');

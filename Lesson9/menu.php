@@ -7,7 +7,13 @@ if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
 $catalogs = Models\Catalog::instance($pdo);
 $menu = [];
 $menu['/'] = 'Главная';
-$menu['/login.php'] = 'Вход';
+
+if (isset($_SESSION['user_id'])) {
+    $menu['logout.php'] = 'Выход (' . htmlspecialchars($_SESSION['user_name']) . ')';
+} else {
+    $menu['login.php'] = 'Вход';
+}
+
 foreach ($catalogs->items() as $catalog) {
     $menu["/index.php?catalog_id={$catalog['id']}"] = $catalog['name'];
 }

@@ -2,7 +2,7 @@
 session_start();
 spl_autoload_register();
 
-require_once(__DIR__ . '/../db_connect.php');
+require_once(__DIR__ . '/../database/db_connect.php');
 
 $errors = [];
 $name = '';
@@ -52,7 +52,7 @@ if (!empty($_POST)) {
 
 require_once(__DIR__ . '/../pagecontent/header.php');
 
-require(__DIR__ . '/../pagecontent/menu.php');
+require(__DIR__ . '/../menu.php');
 
 if(!empty($errors)){
     echo "<div class='alert alert-danger col-6'>";

@@ -2,10 +2,10 @@
 session_start();
 spl_autoload_register();
 
-require_once(__DIR__ . '/db_connect.php');
+require_once(__DIR__ . '/database/db_connect.php');
 require_once(__DIR__ . '/pagecontent/header.php');
 
-require(__DIR__ . '/pagecontent/menu.php');
+require(__DIR__ . '/menu.php');
 
 if (empty($_GET['catalog_id'])) {
     require_once(__DIR__ . '/pagecontent/catalogs.php');

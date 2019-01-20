@@ -20,7 +20,7 @@ if (!empty($_POST)) {
     if (empty($errors)) {
         $query = "SELECT * FROM users WHERE email = ?";
         $result = $pdo->prepare($query);
-        $result->execute([$_POST['email']]);
+        $result->execute([$email]);
         $user = $result->fetch();
         if (!$user) {
             $errors[] = 'Адрес не зарегестрирован';
@@ -34,7 +34,6 @@ if (!empty($_POST)) {
             header('location: /');
             exit();
         }
-
     }
 }
 

@@ -12,6 +12,7 @@ if (isset($_SESSION['user_id'])) {
     $menu['logout.php'] = 'Выход (' . htmlspecialchars($_SESSION['user_name']) . ')';
 } else {
     $menu['login.php'] = 'Вход';
+    $menu['registration.php'] = 'Регистрация';
 }
 
 foreach ($catalogs->items() as $catalog) {

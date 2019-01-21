@@ -44,7 +44,11 @@ if (!empty($_POST)) {
             $query = "INSERT INTO users(name, email, password) VALUES (?, ?, ?)";
             $result = $pdo->prepare($query);
             $result->execute([$name, $email, password_hash($password, PASSWORD_DEFAULT)]);
-            header('location: /authorization/login.php');
+
+            $_SESSION['user_id'] = $pdo->lastInsertId();
+            $_SESSION['user_name'] = $name;
+
+            header('location: /');
             exit();
         }
     }
